@@ -1,0 +1,460 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Header styles */
+header {
+    padding: 6px 8px;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    padding: 0 4px 0 16px;
+}
+
+.left-nav, .right-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-nav a {
+    color: rgba(0,0,0,0.87);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 5px 6.7px;
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+}
+
+.apps-button {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px;
+}
+
+.apps-button svg {
+    width: 24px;
+    height: 24px;
+    fill: #5f6368;
+    opacity: 0.85;
+}
+
+.apps-button:hover svg {
+    opacity: 1;
+}
+
+.apps-button:hover {
+    background-color: rgba(60,64,67,0.08);
+}
+
+.signin-button {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    padding: 9px 23px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.signin-button:hover {
+    background: #2b7de9;
+    box-shadow: 0 1px 2px 0 rgba(66,133,244,0.3),0 1px 3px 1px rgba(66,133,244,0.15);
+}
+
+/* Main content styles */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 290px);
+    padding-top: 168px;
+    max-height: 100vh;
+    font-family: arial,sans-serif;
+}
+
+.logo-section {
+    margin-bottom: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 92px;
+    max-height: 290px;
+    height: calc(100% - 560px);
+}
+
+.logo-section img {
+    max-height: 100%;
+    max-width: 272px;
+    width: auto;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.search-section {
+    width: 100%;
+    max-width: 584px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.search-box {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 584px;
+}
+
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 584px;
+    height: 44px;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    padding: 0 8px 0 16px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(32,33,36,.1);
+}
+
+.search-input-wrapper:hover {
+    box-shadow: 0 1px 6px rgba(32,33,36,.28);
+    border-color: rgba(223,225,229,0);
+    background-color: #fff;
+}
+
+.search-input {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin: 0 8px;
+}
+
+.search-icon, .voice-icon, .camera-icon {
+    cursor: pointer;
+    padding: 0 8px;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    fill: #9aa0a6;
+    padding: 0;
+}
+
+.voice-icon {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0 8px;
+    cursor: pointer;
+}
+
+.camera-icon {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0 8px;
+    cursor: pointer;
+}
+
+.search-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.search-buttons button {
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    font-family: arial,sans-serif;
+    font-size: 14px;
+    margin: 11px 4px;
+    padding: 0 16px;
+    line-height: 27px;
+    height: 36px;
+    min-width: 54px;
+    cursor: pointer;
+}
+
+.search-buttons button:hover {
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    background-color: #f8f9fa;
+    border: 1px solid #dadce0;
+    color: #202124;
+}
+
+.search-buttons button:focus {
+    border: 1px solid #4285f4;
+    outline: none;
+}
+
+/* Footer styles */
+footer {
+    background: #f2f2f2;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    color: #70757a;
+    margin-top: auto;
+}
+
+.footer-top {
+    padding: 15px 30px;
+    border-bottom: 1px solid #dadce0;
+    color: #70757a;
+    font-size: 15px;
+}
+
+.language-selector {
+    text-align: center;
+    padding: 0 0 20px;
+    font-size: 13px;
+    color: #4d5156;
+    margin-top: auto;
+}
+
+.language-selector a {
+    color: #1a0dab;
+    text-decoration: none;
+    padding: 0 3px;
+}
+
+.language-selector a:hover {
+    text-decoration: underline;
+}
+
+.footer-top {
+    padding: 15px 30px;
+    border-bottom: 1px solid #dadce0;
+    color: rgba(0,0,0,.54);
+    font-size: 15px;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+    min-height: 48px;
+    align-items: center;
+    border-top: 1px solid #dadce0;
+}
+
+.footer-bottom a {
+    padding: 15px;
+    white-space: nowrap;
+    line-height: 18px;
+}
+
+.left-footer, .center-footer, .right-footer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+footer a {
+    color: #70757a;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 13px 0;
+    margin: 0 15px;
+}
+
+footer a:hover {
+    color: #3c4043;
+    text-decoration: underline;
+}
+
+.center-footer a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.center-footer img {
+    height: 14px;
+    width: auto;
+}
+
+/* Cookie dialog styles */
+.cookie-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(32, 33, 36, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.cookie-content {
+    background: white;
+    padding: 24px 24px 32px;
+    border-radius: 8px;
+    max-width: 640px;
+    width: 90%;
+    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    overflow-y: auto;
+    max-height: calc(100vh - 40px);
+}
+
+.cookie-logo {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 16px;
+}
+
+.cookie-content h1 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    color: #202124;
+    font-weight: 400;
+    line-height: 28px;
+    font-family: "Google Sans",arial,sans-serif;
+    letter-spacing: 0;
+}
+
+.cookie-content p {
+    color: #5f6368;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 32px 0 8px;
+}
+
+.cookie-content p:first-of-type {
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+.cookie-content ul {
+    color: #5f6368;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    padding-left: 24px;
+}
+
+.cookie-content li {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.cookie-content li::before {
+    content: "•";
+    position: absolute;
+    left: -16px;
+    top: -1px;
+    color: #5f6368;
+    font-size: 16px;
+}
+
+.cookie-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid #dadce0;
+}
+
+.reject-button, .accept-button {
+    padding: 0 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    height: 36px;
+    min-width: 104px;
+    font-family: "Google Sans",arial,sans-serif;
+}
+
+.reject-button {
+    background: #f8f9fa;
+    border: 1px solid #dadce0;
+    color: #1a73e8;
+}
+
+.reject-button:hover {
+    background-color: #f8f9fa;
+    border: 1px solid #dadce0;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+
+.accept-button {
+    background: #1a73e8;
+    border: 1px solid #1a73e8;
+    color: white;
+}
+
+.accept-button:hover {
+    background: #1557b0;
+    border: 1px solid #1557b0;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+
+.cookie-footer {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #5f6368;
+    font-size: 12px;
+    padding-bottom: 8px;
+}
+
+.cookie-footer span {
+    color: rgba(0,0,0,.54);
+}
+
+.cookie-footer a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.cookie-footer a:hover {
+    text-decoration: underline;
+}
