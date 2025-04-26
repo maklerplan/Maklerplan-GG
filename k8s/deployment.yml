@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geo-lead-distribution
+  labels:
+    app: geo-lead-distribution
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: geo-lead-distribution
+  template:
+    metadata:
+      labels:
+        app: geo-lead-distribution
+    spec:
+      containers:
+        - name: geo-lead-distribution
+          image: gcr.io/PROJECT_ID/geo-lead-distribution:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: password
+            - name: DB_HOST
+              value: "your-db-host"
+            - name: DB_NAME
+              value: "lead_distribution"
+            - name: REDIS_HOST
+              value: "your-redis-host"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: STRIPE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: stripe-secrets
+                  key: secret-key
+            - name: STRIPE_WEBHOOK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: stripe-secrets
+                  key: webhook-secret
+            - name: SENDGRID_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sendgrid-secrets
+                  key: api-key
+            - name: FROM_EMAIL
+              value: "your-verified-email@example.com"
+            - name: DIALFIRE_API_URL
+              value: "https://api.dialfire.com/v1"
+            - name: DIALFIRE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: dialfire-secrets
+                  key: api-key
+            - name: ADMIN_EMAIL
+              value: "admin@example.com"
+            - name: LEAD_DELAY_DAYS
+              value: "3"
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+      imagePullSecrets:
+        - name: gcr-json-key
