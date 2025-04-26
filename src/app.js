@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { scheduleJobs } = require('./jobs/processors');
 const stripeService = require('./services/stripe.service');
+const db = require('./config/database');
 
 const app = express();
 
@@ -71,6 +72,54 @@ app.post('/customers', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+// New API endpoints for frontend
+
+// Get all customers
+app.get('/api/customers', async (req, res) => {
+  try {
+    const query = 'SELECT id, name, email, status, last_payment_date FROM customers ORDER BY id DESC';
+    const { rows } = await db.query(query);
+    res.json(rows);
+  } catch (error) {
+    console.error('Error fetching customers:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Get all subscriptions with customer names
+app.get('/api/subscriptions', async (req, res) => {
+  try {
+    const query = `
+      SELECT s.id, s.plz, s.status, s.start_date, s.end_date, c.name AS customer_name
+      FROM subscriptions s
+      JOIN customers c ON s.customer_id = c.id
+      ORDER BY s.id DESC
+    `;
+    const { rows } = await db.query(query);
+    res.json(rows);
+  } catch (error) {
+    console.error('Error fetching subscriptions:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Get all leads
+app.get('/api/leads', async (req, res) => {
+  try {
+    const query = `
+      SELECT id, plz, status, created_at, processed_at
+      FROM leads
+      ORDER BY created_at DESC
+    `;
+    const { rows } = await db.query(query);
+    res.json(rows);
+  } catch (error) {
+    console.error('Error fetching leads:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 // Start background jobs
 scheduleJobs();
