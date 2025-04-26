@@ -1,18 +1,13 @@
-# Use official Node.js LTS image
+# Backend Production Image
 FROM node:18-alpine
-
-# Create app directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
-COPY package*.json ./
-RUN npm install --production
+ENV NODE_ENV=production
 
-# Bundle app source
+COPY package*.json ./
+RUN npm install --omit=dev
+
 COPY . .
 
-# Expose port
 EXPOSE 3000
-
-# Start the server
-CMD [\"node\", \"src/server.js\"]
+CMD ["node", "src/server.js"]
